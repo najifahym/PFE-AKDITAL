@@ -1,0 +1,9 @@
+CREATE DATABASE if0_36249971_EPM; 
+CREATE TABLE `if0_36249971_EPM`.`users` (`u_id` INT NOT NULL AUTO_INCREMENT , `u_name` VARCHAR(50) NOT NULL , `u_mail` VARCHAR(70) NOT NULL , `u_pass` VARCHAR(30) NOT NULL , `u_cab` TEXT NOT NULL , `u_spi` VARCHAR(50) NOT NULL , `u_tel` VARCHAR(30) NOT NULL , `u_add` TEXT NOT NULL , PRIMARY KEY (`u_id`)) ENGINE = InnoDB;
+CREATE TABLE `if0_36249971_EPM`.`patients` (`p_id` INT NOT NULL AUTO_INCREMENT , `p_fname` VARCHAR(50) NOT NULL , `p_sname` VARCHAR(50) NOT NULL , `p_cin` VARCHAR(30) NOT NULL , `p_ddn` VARCHAR(30) NOT NULL , `p_sexe` VARCHAR(30) NOT NULL , `p_tel` VARCHAR(30) NOT NULL , `p_ville` VARCHAR(50) NOT NULL , `p_etab` TEXT NOT NULL , `p_sang` VARCHAR(10) NOT NULL , `p_mal` TEXT NOT NULL , `p_doc` INT(11) NOT NULL , PRIMARY KEY (`p_id`)) ENGINE = InnoDB;
+CREATE TABLE `if0_36249971_EPM`.`events` (`e_id` INT NOT NULL AUTO_INCREMENT , `eu_id` INT NOT NULL ,`e_show` INT NOT NULL , `e_bpm` VARCHAR(10) NOT NULL , `e_spo2` VARCHAR(10) NOT NULL , `e_date` VARCHAR(20) NOT NULL , `e_time` VARCHAR(20) NOT NULL , `e_msg` TEXT NOT NULL , `e_err` VARCHAR(10) NOT NULL , `e_urg` VARCHAR(10) NOT NULL , PRIMARY KEY (`e_id`)) ENGINE = InnoDB;
+CREATE TABLE `if0_36249971_EPM`.`data` (`d_id` INT NOT NULL AUTO_INCREMENT , `dp_id` INT NOT NULL , `d_date` VARCHAR(50) NOT NULL , `d_time` VARCHAR(30) NOT NULL , `d_bpm` INT NOT NULL , `d_spo2` INT NOT NULL , `d_nibp`  VARCHAR(20) NOT NULL , `d_temp` FLOAT(20) NOT NULL , `d_rr` INT NOT NULL , PRIMARY KEY (`d_id`)) ENGINE = InnoDB;
+ALTER TABLE `patients` ADD `p_etat` INT NOT NULL DEFAULT '0' AFTER `p_doc`;
+ALTER TABLE `patients` ADD `p_datein` VARCHAR(20) NOT NULL AFTER `p_etat`, ADD `p_dateout` VARCHAR(20) NOT NULL AFTER `p_datein`;
+ALTER TABLE `data` ADD `d_nibpd` INT NOT NULL AFTER `d_nibp`;
+ALTER TABLE `data` CHANGE `d_nibp` `d_nibps` INT NOT NULL;
